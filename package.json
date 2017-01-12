@@ -20,5 +20,24 @@
   "bugs": {
     "url": "https://github.com/giridharangm/react-express-hybrid/issues"
   },
-  "homepage": "https://github.com/giridharangm/react-express-hybrid#readme"
+  "homepage": "https://github.com/giridharangm/react-express-hybrid#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "chalk": "^1.1.3",
+    "cross-env": "^3.1.4",
+    "css-loader": "^0.26.1",
+    "html-webpack-plugin": "^2.26.0",
+    "opn": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
+  }
 }

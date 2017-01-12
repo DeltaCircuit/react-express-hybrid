@@ -1,0 +1,24 @@
+{
+  "name": "react-express-hybrid",
+  "version": "1.0.0",
+  "description": "A highly opinionated project/folder structure to handle multiple React front-end apps and back-end API on a same server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giridharangm/react-express-hybrid.git"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "hmr"
+  ],
+  "author": "Giridharan GM",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/giridharangm/react-express-hybrid/issues"
+  },
+  "homepage": "https://github.com/giridharangm/react-express-hybrid#readme"
+}

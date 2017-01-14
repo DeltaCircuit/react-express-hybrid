@@ -1,27 +1,27 @@
-import webpack from 'webpack'
-import devConfig from './webpack.config.dev'
-import chalk from 'chalk'
+/* eslint-disable import/no-extraneous-dependencies, no-console */
+import webpack from 'webpack';
+import chalk from 'chalk';
+import devConfig from './webpack.config.dev';
 
-const compiler = webpack(devConfig)
+const compiler = webpack(devConfig);
+compiler.plugin('invalid', () => {
+  // process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
 
-compiler.plugin('invalid', function () {
-    //process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
-    console.log(chalk.cyan('Compiling.. Please wait'))
-})
+  console.log(chalk.cyan('Compiling.. Please wait'));
+});
 
-compiler.plugin('done', function (stats) {
-    //process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
-    if (stats.hasErrors()) {
-        console.log(chalk.red('Errors found!'))
-        var formattedStats = stats.toJson("errors-only")
-        formattedStats.errors.forEach(function (item) {
-            console.log(item)
-        })
-        return
-    }
-    console.log(chalk.green('Compiled!\n'))
-    console.log(chalk.magenta(`Please visit http://localhost:1234`))
-    return
-})
+compiler.plugin('done', (stats) => {
+  // process.stdout.write(process.platform === 'win32' ? '\x1Bc' : '\x1B[2J\x1B[3J\x1B[H');
+  if (stats.hasErrors()) {
+    console.log(chalk.red('Errors found!'));
+    const formattedStats = stats.toJson('errors-only');
+    formattedStats.errors.forEach((item) => {
+      console.log(item);
+    });
+    return;
+  }
+  console.log(chalk.green('Compiled!\n'));
+  console.log(chalk.magenta('Please visit http://localhost:1234'));
+});
 
-module.exports = compiler
+module.exports = compiler;

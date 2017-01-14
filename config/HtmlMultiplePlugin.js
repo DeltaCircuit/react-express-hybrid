@@ -1,23 +1,25 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var path = require('path')
-var fs = require('fs')
+/* eslint-disable import/no-extraneous-dependencies */
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
-function HelloWorldPlugin(options) {
+function HelloWorldPlugin() {
 
 }
 
-HelloWorldPlugin.prototype.apply = function (compiler) {
-    Object.keys(compiler.options.entry).forEach(function (entry) {
-        var hwb = new HtmlWebpackPlugin({
-            chunks: ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server', entry],
-            title: entry,
-            chunksSortMode: 'none',
-            filename: entry + '/index.html',
-            template: path.resolve(__dirname, '..', 'public', 'template.html')
-        })
-        hwb.apply(compiler)
-        hwb = null
-    })
+function applier(compiler) {
+  Object.keys(compiler.options.entry).forEach((entry) => {
+    let hwb = new HtmlWebpackPlugin({
+      chunks: ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server', entry],
+      title: entry,
+      chunksSortMode: 'none',
+      filename: `${entry}/index.html`,
+      template: path.resolve(__dirname, '..', 'public', 'template.html'),
+    });
+    hwb.apply(compiler);
+    hwb = null;
+  });
 }
 
-module.exports = HelloWorldPlugin
+
+HelloWorldPlugin.prototype.apply = applier;
+module.exports = HelloWorldPlugin;

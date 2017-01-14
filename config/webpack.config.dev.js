@@ -3,7 +3,7 @@ var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HtmlMultiplePlugin = require('./HtmlMultiplePlugin')
 var getDevPaths = require('./GetEntryPoints').GetDevEntries
-console.log('asd', __dirname)
+
 module.exports = {
     context: __dirname,
     entry: getDevPaths(),

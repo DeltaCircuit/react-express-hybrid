@@ -25,7 +25,6 @@ var getDevEntryPoints = function () {
     // One or more sub modules present
     reactModules.forEach(function (module) {
         var indexPath = path.normalize(path.relative(__dirname, path.join(appSourceDir, module, 'index.js')))
-        console.log(indexPath)
         var entryArray = ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server'].concat(indexPath)
         entry[module] = entryArray
     })

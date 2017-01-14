@@ -29,7 +29,6 @@ if (env !== 'production') {
 
     app.get('*', (req, res, next) => {
         var react_app = req.originalUrl
-        console.log(react_app)
         if (react_app === '/') {
             res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'))
         } else {

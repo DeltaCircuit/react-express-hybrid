@@ -2,14 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var HtmlMultiplePlugin = require('./HtmlMultiplePlugin')
+var getDevPaths = require('./GetEntryPoints').GetDevEntries
+console.log('asd', __dirname)
 module.exports = {
-    //context: __dirname,
-    entry: {
-        "welcome": ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server', './src/client/welcome/index.js'],
-        "moduletwo": ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server', './src/client/moduletwo/index.js'],
-    },
-
-    output: {
+    context: __dirname,
+    entry: getDevPaths(),
+        output: {
         path: path.resolve(__dirname, '..', 'dist'),
         filename: '[name]/[name]-[hash].js',
         publicPath: 'http://localhost:1234/'

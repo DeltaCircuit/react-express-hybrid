@@ -44,7 +44,7 @@ module.exports = function (source) {
     } else if (Object.prototype.toString.call(entryFile) === '[object Array]') {
 
         isQualified = entryFile.some(function (item) {
-            return context.resourcePath == path.resolve(item)
+            return context.resourcePath == require.resolve(item)
         })
 
     }

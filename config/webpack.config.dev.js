@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlMultiplePlugin = require('./HtmlMultiplePlugin');
-const getDevPaths = require('./GetEntryPoints').GetDevEntries;
+const getEntries = require('./GetEntryPoints');
 
 module.exports = {
   context: __dirname,
-  entry: getDevPaths(),
+  entry: getEntries('prod'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: '[name]/[name]-[hash].js',
@@ -35,13 +35,13 @@ module.exports = {
   },
   devServer: {
     hot: true,
-        //quiet: true
+    //quiet: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlMultiplePlugin(),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, 'public', 'index.html')
-        // })
+    // new HtmlWebpackPlugin({
+    //     template: path.resolve(__dirname, 'public', 'index.html')
+    // })
   ],
 };

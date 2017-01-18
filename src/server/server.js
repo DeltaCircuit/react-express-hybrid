@@ -12,7 +12,7 @@ const app = express();
 const env = app.get('env');
 // app.use('/', express.static(path.resolve(__dirname, '..', '..', 'dist')))
 app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
-app.use(express.static(path.resolve(__dirname, '..', '..', 'public')));
+// app.use(express.static(path.resolve(__dirname, '..', '..', 'public')));
 
 // If no environment is specified, we'll assume its developments
 if (env !== 'production') {

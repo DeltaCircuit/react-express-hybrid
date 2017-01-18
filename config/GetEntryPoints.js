@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // Method to generate entry points for webpack for development enviroment (HMR) included
 
-const appSourceDir = path.resolve(__dirname, '..', 'src', 'client');
+const appSourceDir = path.resolve(process.cwd(), 'src', 'client');
 const reactModules = fs.readdirSync(appSourceDir).filter(file =>
   fs.statSync(path.join(appSourceDir, file)).isDirectory(),
 );
@@ -18,7 +18,7 @@ module.exports = function getEntryPoints(env) {
 
   // No sub modules
   if (reactModules.length === 0) {
-    const indexPath = path.normalize(path.relative(__dirname, path.join(appSourceDir, 'index.js')));
+    const indexPath = path.normalize(path.join(appSourceDir, 'index.js'));
     const entryArray = devLib.concat(indexPath);
     entry.main = entryArray;
     return entry;
@@ -26,7 +26,7 @@ module.exports = function getEntryPoints(env) {
 
   // One or more sub modules present
   reactModules.forEach((module) => {
-    const indexPath = path.normalize(path.relative(__dirname, path.join(appSourceDir, module, 'index.js')));
+    const indexPath = path.normalize(path.join(appSourceDir, module, 'index.js'));
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;
   });

@@ -1,4 +1,4 @@
-# react-express-hybrid
+# react-express-hybrid [WIP]
 This is a highly-opinionated project architecture for handling multiple React front-end apps and single API backend server on the same server. 
 This project has pre-built configuration settings that will allow you to create a production-ready build for the server and the client on a single command.
 

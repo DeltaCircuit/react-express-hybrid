@@ -4,8 +4,7 @@ const HtmlMultiplePlugin = require('./HtmlMultiplePlugin');
 const getEntries = require('./GetEntryPoints');
 
 module.exports = {
-  context: __dirname,
-  entry: getEntries('prod'),
+  entry: getEntries('dev'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: '[name]/[name]-[hash].js',
@@ -17,7 +16,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loaders: ['babel',
-          'custom-loader',
+          'hot-module-accept',
         ],
         include: path.resolve(__dirname, '..', 'src', 'client'),
         exclude: /node_modules/,
@@ -27,11 +26,6 @@ module.exports = {
         loader: 'style!css',
       },
     ],
-  },
-  resolveLoader: {
-    alias: {
-      'custom-loader': path.join(__dirname, './hmr'),
-    },
   },
   devServer: {
     hot: true,

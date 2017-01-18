@@ -6,13 +6,12 @@ const fs = require('fs');
 // Method to generate entry points for webpack for development enviroment (HMR) included
 
 const appSourceDir = path.resolve(process.cwd(), 'src', 'client');
-const reactModules = fs.readdirSync(appSourceDir).filter(file =>
-  fs.statSync(path.join(appSourceDir, file)).isDirectory(),
-);
+const reactModules = fs.readdirSync(appSourceDir)
+  .filter(file => fs.statSync(path.join(appSourceDir, file)).isDirectory());
 const webPackHotLibs = ['webpack-dev-server/client?http://localhost:8080/', 'webpack/hot/dev-server'];
 
 module.exports = function getEntryPoints(env) {
-  const entry = Object.create(null);
+  const entry = {};
   const devLib = env === 'prod' ? [] : webPackHotLibs;
 
 
@@ -20,8 +19,7 @@ module.exports = function getEntryPoints(env) {
   if (reactModules.length === 0) {
     const indexPath = path.normalize(path.join(appSourceDir, 'index.js'));
     const entryArray = devLib.concat(indexPath);
-    entry.main = entryArray;
-    return entry;
+    return entryArray;
   }
 
   // One or more sub modules present

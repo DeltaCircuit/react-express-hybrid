@@ -12,7 +12,8 @@ const webPackHotLibs = ['webpack-dev-server/client?http://localhost:8080/', 'web
 
 module.exports = function getEntryPoints(env) {
   const entry = {};
-  const devLib = env === 'prod' ? [] : webPackHotLibs;
+  const enviroment = env ? env : (process.env.NODE_ENV ? process.env.NODE_ENV : 'development');
+  const devLib = env === 'production' ? [] : webPackHotLibs;
 
 
   // No sub modules
@@ -29,7 +30,7 @@ module.exports = function getEntryPoints(env) {
       indexPath = path.normalize(path.join(appSourceDir, module, 'index.js'));
     } else {
       indexPath = path.normalize(path.join(appSourceDir, module, 'src', 'index.js'));
-    }    
+    }
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;
   });

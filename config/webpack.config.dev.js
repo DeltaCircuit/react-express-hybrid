@@ -4,7 +4,7 @@ const HtmlMultiplePlugin = require('./HtmlMultiplePlugin');
 const getEntries = require('./GetEntryPoints');
 
 module.exports = {
-  entry: getEntries('dev'),
+  entry: getEntries('development'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
     filename: '[name]/[name]-[hash].js',
@@ -37,9 +37,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlMultiplePlugin(),
-    // new HtmlWebpackPlugin({
-    //     template: path.resolve(__dirname, 'public', 'index.html')
-    // })
+    new HtmlMultiplePlugin()
   ],
 };

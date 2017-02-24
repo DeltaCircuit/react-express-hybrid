@@ -9,7 +9,7 @@ const devServer = new WebpackDevServer(compiler, {
 });
 if (process.env.NODE_ENV !== 'production') {
   devServer.listen(8080, () => {
-        // eslint-disable-next-line no-console
+    // eslint-disable-next-line no-console
     console.log(chalk.gray(`Webpack Dev Server started at ${8080}`));
   });
 }

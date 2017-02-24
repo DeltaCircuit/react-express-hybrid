@@ -11,30 +11,22 @@ const app = express();
 
 // Which environment are we working?
 const env = app.get('env');
-// app.use('/', express.static(path.resolve(__dirname, '..', '..', 'dist')))
 app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
-// app.use(express.static(path.resolve(__dirname, '..', '..', 'public')));
-
-// If no environment is specified, we'll assume its developments
+// If no environment is specified, we'll assume its development env
 if (env !== 'production') {
   app.use(webpackMiddleware);
 }
 app.get('/[a-z 0-9]+/', (req, res, next) => {
-  const reactApp = req.originalUrl;
-  if (reactApp === '/') {
-    res.sendFile(path.resolve(__dirname, '..', '..', 'public', 'index.html'));
-  } else {
-    const filename = path.resolve(compiler.outputPath, reactApp, 'index.html');
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err);
-      }
-      res.set('content-type', 'text/html');
-      res.send(result);
-      res.end();
-      return 1;
-    });
-  }
+  const filename = path.resolve(compiler.outputPath, req.originalUrl, 'index.html');
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.set('content-type', 'text/html');
+    res.send(result);
+    res.end();
+    return 1;
+  });
 });
 // Make our /dist folder static
 

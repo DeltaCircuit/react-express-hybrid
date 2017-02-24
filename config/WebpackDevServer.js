@@ -8,6 +8,8 @@ const devServer = new WebpackDevServer(compiler, {
   quiet: true,
 });
 if (process.env.NODE_ENV !== 'production') {
+  // eslint-disable-next-line no-console
+  console.log(chalk.green('Starting in Development mode.'));
   devServer.listen(8080, () => {
     // eslint-disable-next-line no-console
     console.log(chalk.gray(`Webpack Dev Server started at ${8080}`));

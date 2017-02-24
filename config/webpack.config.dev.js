@@ -28,7 +28,7 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'file',
-      }
+      },
     ],
   },
   devServer: {
@@ -37,6 +37,6 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlMultiplePlugin()
+    new HtmlMultiplePlugin(),
   ],
 };

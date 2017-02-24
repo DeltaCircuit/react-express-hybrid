@@ -5,7 +5,7 @@ const path = require('path');
 let hwpOptions = {
   chunksSortMode: 'none',
   template: path.resolve(__dirname, '..', 'public', 'template.html'),
-}
+};
 
 function HelloWorldPlugin(options) {
   if (options && options.production) {
@@ -21,8 +21,8 @@ function HelloWorldPlugin(options) {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true
-      }
+        minifyURLs: true,
+      },
     }, hwpOptions);
   }
 }
@@ -36,7 +36,7 @@ function applier(compiler) {
         chunks: [entry],
         title: entry,
         filename: `${entry}/index.html`,
-      }, hwpOptions)
+      }, hwpOptions);
       let hwb = new HtmlWebpackPlugin(test);
       hwb.apply(compiler);
       hwb = null;

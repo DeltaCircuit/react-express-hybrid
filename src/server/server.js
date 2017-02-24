@@ -2,7 +2,7 @@
 import express from 'express';
 // import WebpackDevServer from 'webpack-dev-server';
 // import opn from 'opn';
-// import chalk from 'chalk';
+import chalk from 'chalk';
 import path from 'path';
 import compiler from '../../config/compiler';
 import webpackMiddleware from '../../config/WebpackDevServer';
@@ -12,6 +12,8 @@ const app = express();
 // Which environment are we working?
 const env = app.get('env');
 if (env === 'production') {
+  // eslint-disable-next-line no-console
+  console.log(chalk.red('WARNING!!!: Running in Production mode.'));
   app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
 }
 app.use(express.static(path.resolve(__dirname, '..', '..', 'dist', 'static')));

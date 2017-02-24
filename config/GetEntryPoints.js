@@ -12,8 +12,8 @@ const webPackHotLibs = ['webpack-dev-server/client?http://localhost:8080/', 'web
 
 module.exports = function getEntryPoints(env) {
   const entry = {};
-  const enviroment = env ? env : (process.env.NODE_ENV ? process.env.NODE_ENV : 'development');
-  const devLib = env === 'production' ? [] : webPackHotLibs;
+  const enviroment = env || (process.env.NODE_ENV ? process.env.NODE_ENV : 'development');
+  const devLib = enviroment === 'production' ? [] : webPackHotLibs;
 
 
   // No sub modules

@@ -25,6 +25,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css',
       },
+      {
+        test: /\.svg$/,
+        loader: 'file',
+      }
     ],
   },
   devServer: {

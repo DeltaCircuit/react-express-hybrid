@@ -11,9 +11,9 @@ function applier(compiler) {
   const webpackEntry = compiler.options.entry;
   const entryType = Object.prototype.toString.call(webpackEntry);
   if (entryType === '[object Object]') {
-    Object.keys(compiler.options.entry).forEach((entry) => {
+    Object.keys(compiler.options.entry).forEach((entry) => {      
       let hwb = new HtmlWebpackPlugin({
-        chunks: entry,
+        chunks: [entry],
         title: entry,
         chunksSortMode: 'none',
         filename: `${entry}/index.html`,

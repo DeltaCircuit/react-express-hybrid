@@ -24,7 +24,12 @@ module.exports = function getEntryPoints(env) {
 
   // One or more sub modules present
   reactModules.forEach((module) => {
-    const indexPath = path.normalize(path.join(appSourceDir, module, 'index.js'));
+    let indexPath;
+    if (fs.existsSync(path.join(appSourceDir, module, 'index.js'))) {
+      indexPath = path.normalize(path.join(appSourceDir, module, 'index.js'));
+    } else {
+      indexPath = path.normalize(path.join(appSourceDir, module, 'src', 'index.js'));
+    }    
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;
   });

@@ -1,6 +1,6 @@
 <img src='./es.png' width="100"/>  
   
-# react-express-hybrid [WIP]
+# react-express-hybrid
 This is a highly-opinionated project architecture for handling multiple React front-end apps and single API backend server on the same server. 
 This project has pre-built configuration settings that will allow you to create a production-ready build for the server and the client on a single command.
 

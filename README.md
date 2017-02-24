@@ -1,6 +1,10 @@
-<img src='./es.png' width="100"/>  
-  
-# react-express-hybrid
+<div align="center">
+  <a href="https://github.com/webpack/webpack">
+    <img width="200" height="200"
+      src='./es.png'>
+  </a>
+  <h1>react-express-hybrid</h1>
+</div>
 This is a highly-opinionated project architecture for handling multiple React front-end apps and single API backend server on the same server. 
 This project has pre-built configuration settings that will allow you to create a production-ready build for the server and the client on a single command.
 

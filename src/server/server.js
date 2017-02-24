@@ -11,7 +11,10 @@ const app = express();
 
 // Which environment are we working?
 const env = app.get('env');
-app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
+if (env === 'production') {
+  app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
+}
+app.use(express.static(path.resolve(__dirname, '..', '..', 'dist', 'static')));
 // If no environment is specified, we'll assume its development env
 if (env !== 'production') {
   app.use(webpackMiddleware);

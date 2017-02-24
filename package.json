@@ -9,7 +9,8 @@
     "start": "cross-env NODE_ENV=development babel-node .\\src\\server\\server.js",
     "build": "webpack --config .\\config\\webpack.config.prod.js",
     "start:prod": "cross-env NODE_ENV=production babel-node .\\src\\server\\server.js",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",

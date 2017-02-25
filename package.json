@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
-    "start": "cross-env NODE_ENV=development babel-node ./src/server/server.js",
+    "start": "cross-env NODE_ENV=development babel-node ./src/server/index.js",
     "build": "webpack --config ./config/webpack.config.prod.js",
     "start:prod": "cross-env NODE_ENV=production node ./bin/www",
     "compile": "babel ./src/server/ --out-dir ./bin/www/",

@@ -15,12 +15,10 @@ module.exports = function getEntryPoints(env) {
   const enviroment = env || (process.env.NODE_ENV ? process.env.NODE_ENV : 'development');
   const devLib = enviroment === 'production' ? [] : webPackHotLibs;
 
-
-  // No sub modules
-  if (reactModules.length === 0) {
-    const indexPath = path.normalize(path.join(appSourceDir, 'index.js'));
-    const entryArray = devLib.concat(indexPath);
-    return entryArray;
+  const rootIndexPath = path.normalize(path.join(appSourceDir, 'index.js'));
+  if (fs.existsSync(rootIndexPath)) {
+    const entryArray = devLib.concat(rootIndexPath);
+    entry["index"] = entryArray;
   }
 
   // One or more sub modules present

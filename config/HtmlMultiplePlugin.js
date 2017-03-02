@@ -35,7 +35,7 @@ function applier(compiler) {
       const test = Object.assign({
         chunks: [entry],
         title: entry,
-        filename: `${entry}/index.html`,
+        filename: entry == 'index' ? 'index.html' : `${entry}/index.html`,
       }, hwpOptions);
       let hwb = new HtmlWebpackPlugin(test);
       hwb.apply(compiler);

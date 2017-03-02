@@ -1,0 +1,17 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;    
+}
+.App{
+    text-align: center
+}
+#logo{
+    width: 10em;
+}
+#header{    
+    padding: 1em;    
+}
+#header h1{
+    font-weight: 400;
+}

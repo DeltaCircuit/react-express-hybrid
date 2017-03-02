@@ -7,7 +7,7 @@ module.exports = {
   entry: getEntries('production'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
-    filename: '[name]/[name]-[hash].js',
+    filename: 'static/js/[name]/bundle.js',
     publicPath: 'http://localhost:1234/',
   },
 
@@ -32,9 +32,9 @@ module.exports = {
     ],
   },
   plugins: [
-        // This helps ensure the builds are consistent if source hasn't changed:
+    // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurrenceOrderPlugin(),
-        // Try to dedupe duplicated modules, if any:
+    // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlMultiplePlugin({ production: true }),
@@ -51,8 +51,8 @@ module.exports = {
         screw_ie8: true,
       },
     }),
-        // new HtmlWebpackPlugin({
-        //     template: path.resolve(__dirname, 'public', 'index.html')
-        // })
+    // new HtmlWebpackPlugin({
+    //     template: path.resolve(__dirname, 'public', 'index.html')
+    // })
   ],
 };

@@ -7,7 +7,7 @@ module.exports = {
   entry: getEntries('development'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
-    filename: '[name]/[name]-[hash].js',
+    filename: 'static/js/[name]/bundle.js',
     publicPath: 'http://localhost:1234/',
   },
 

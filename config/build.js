@@ -1,5 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
+/* eslint-disable import/no-extraneous-dependencies, no-console */
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.prod');
 const chalk = require('chalk');

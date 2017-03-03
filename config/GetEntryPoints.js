@@ -31,6 +31,6 @@ module.exports = function getEntryPoints(env) {
     }
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;
-  });
+  });  
   return entry;
 };

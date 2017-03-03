@@ -2,28 +2,28 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlMultiplePlugin = require('./HtmlMultiplePlugin');
 const getEntries = require('./GetEntryPoints');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const cssFilename = 'static/css/[name].[contenthash:8].css';
 
 module.exports = {
   entry: getEntries('production'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
-    filename: 'static/js/[name]/bundle.js',
-    publicPath: 'http://localhost:1234/',
+    filename: 'static/js/[name]/bundle.js'
   },
 
   module: {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        loaders: ['babel',
-          'hot-module-accept',
-        ],
+        loaders: ['babel'],
         include: path.resolve(__dirname, '..', 'src', 'client'),
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        loader: 'style!css',
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')        
       },
       {
         test: /\.svg$/,
@@ -32,11 +32,16 @@ module.exports = {
     ],
   },
   plugins: [
+    new ExtractTextPlugin(cssFilename),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
     // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurrenceOrderPlugin(),
     // Try to dedupe duplicated modules, if any:
     new webpack.optimize.DedupePlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlMultiplePlugin({ production: true }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -51,8 +56,6 @@ module.exports = {
         screw_ie8: true,
       },
     }),
-    // new HtmlWebpackPlugin({
-    //     template: path.resolve(__dirname, 'public', 'index.html')
-    // })
+    new webpack.optimize.AggressiveMergingPlugin()    
   ],
 };

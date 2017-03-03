@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlMultiplePlugin = require('./HtmlMultiplePlugin');
 const getEntries = require('./GetEntryPoints');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const cssFilename = 'static/css/[name].[contenthash:8].css';
 
@@ -10,7 +10,7 @@ module.exports = {
   entry: getEntries('production'),
   output: {
     path: path.resolve(__dirname, '..', 'dist'),
-    filename: 'static/js/[name]/bundle.js'
+    filename: 'static/js/[name]/bundle.js',
   },
 
   module: {
@@ -23,7 +23,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')        
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
       },
       {
         test: /\.svg$/,
@@ -35,8 +35,8 @@ module.exports = {
     new ExtractTextPlugin(cssFilename),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     // This helps ensure the builds are consistent if source hasn't changed:
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -56,6 +56,6 @@ module.exports = {
         screw_ie8: true,
       },
     }),
-    new webpack.optimize.AggressiveMergingPlugin()    
+    new webpack.optimize.AggressiveMergingPlugin(),
   ],
 };

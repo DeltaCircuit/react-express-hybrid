@@ -18,7 +18,7 @@ module.exports = function getEntryPoints(env) {
   const rootIndexPath = path.normalize(path.join(appSourceDir, 'index.js'));
   if (fs.existsSync(rootIndexPath)) {
     const entryArray = devLib.concat(rootIndexPath);
-    entry["index"] = entryArray;
+    entry.index = entryArray;
   }
 
   // One or more sub modules present
@@ -31,6 +31,6 @@ module.exports = function getEntryPoints(env) {
     }
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;
-  });  
+  });
   return entry;
 };

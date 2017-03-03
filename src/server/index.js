@@ -1,10 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
-// import WebpackDevServer from 'webpack-dev-server';
 // import opn from 'opn';
 import chalk from 'chalk';
 import path from 'path';
-import compiler from '../../config/compiler';
 import webpackMiddleware from '../../config/WebpackDevServer';
 // Initialize Express
 const app = express();

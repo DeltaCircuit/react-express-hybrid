@@ -14,7 +14,7 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         exclude: [
           /\.html$/,
@@ -23,7 +23,7 @@ module.exports = {
           /\.json$/,
           /\.svg$/,
         ],
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]',
@@ -31,19 +31,19 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.resolve(__dirname, '..', 'src', 'client'),
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+        use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }),
       },
       {
         test: /\.svg$/,
-        loader: 'file',
+        use: 'file-loader',
       },
-    ],
+    ]
   },
   plugins: [
     new ExtractTextPlugin(cssFilename),

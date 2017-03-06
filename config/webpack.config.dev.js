@@ -12,7 +12,20 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+
+      },
+      {
+        test: /\.(js|jsx)$/,
+        loaders: ['babel-loader',
+          'hot-module-accept',
+        ],
+        include: path.resolve(__dirname, '..', 'src', 'client'),
+        exclude: /node_modules/,
+      },
       {
         exclude: [
           /\.html$/,
@@ -21,29 +34,17 @@ module.exports = {
           /\.json$/,
           /\.svg$/,
         ],
-        loader: 'url',
+        loader: 'url-loader',
         query: {
           limit: 10000,
           name: 'static/media/[name].[hash:8].[ext]',
         },
       },
       {
-        test: /\.(js|jsx)$/,
-        loaders: ['babel',
-          'hot-module-accept',
-        ],
-        include: path.resolve(__dirname, '..', 'src', 'client'),
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        loader: 'style!css',
-      },
-      {
         test: /\.svg$/,
-        loader: 'file',
+        loader: 'file-loader',
       },
-    ],
+    ]
   },
   devServer: {
     hot: true,
@@ -51,6 +52,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
     new HtmlMultiplePlugin(),
   ],
 };

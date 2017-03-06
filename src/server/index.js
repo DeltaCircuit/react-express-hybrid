@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import express from 'express';
 import opn from 'opn';
 import chalk from 'chalk';
@@ -23,5 +22,5 @@ if (env !== 'production') {
 app.listen(1234, () => {
   // eslint-disable-next-line no-console
   console.log('Started!');
-  opn("http://localhost:1234")
+  opn('http://localhost:1234');
 });

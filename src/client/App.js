@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import image from '../../public/logo.png'
+import image from '../../public/logo.png';
+
 const App = () => (
   <div className="App">
     <div id="header">

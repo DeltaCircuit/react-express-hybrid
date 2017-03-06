@@ -10,7 +10,9 @@ module.exports = {
     filename: 'static/js/[name]/bundle.js',
     publicPath: 'http://localhost:1234/',
   },
-
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {

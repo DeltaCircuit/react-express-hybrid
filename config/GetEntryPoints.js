@@ -15,7 +15,7 @@ module.exports = function getEntryPoints(env) {
   const enviroment = env || (process.env.NODE_ENV ? process.env.NODE_ENV : 'development');
   const devLib = enviroment === 'production' ? [] : webPackHotLibs;
 
-  const rootIndexPath = path.normalize(path.join(appSourceDir, 'index.js'));
+  const rootIndexPath = path.normalize(path.join(appSourceDir, 'index.jsx'));
   if (fs.existsSync(rootIndexPath)) {
     const entryArray = devLib.concat(rootIndexPath);
     entry.index = entryArray;
@@ -25,9 +25,9 @@ module.exports = function getEntryPoints(env) {
   reactModules.forEach((module) => {
     let indexPath;
     if (fs.existsSync(path.join(appSourceDir, module, 'index.js'))) {
-      indexPath = path.normalize(path.join(appSourceDir, module, 'index.js'));
+      indexPath = path.normalize(path.join(appSourceDir, module, 'index.jsx'));
     } else {
-      indexPath = path.normalize(path.join(appSourceDir, module, 'src', 'index.js'));
+      indexPath = path.normalize(path.join(appSourceDir, module, 'src', 'index.jsx'));
     }
     const entryArray = devLib.concat(indexPath);
     entry[module] = entryArray;

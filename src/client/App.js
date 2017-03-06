@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-
+import image from '../../public/logo.png'
 const App = () => (
   <div className="App">
     <div id="header">
       <div>
-        <img src="/static/logo.png" id="logo" alt="logo" />
+        <img src={image} id="logo" alt="logo" />
         <h1>React-Express Hybrid</h1>
       </div>
     </div>

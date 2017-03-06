@@ -2,6 +2,8 @@
 const webpack = require('webpack');
 const chalk = require('chalk');
 const devConfig = require('./webpack.config.dev');
+const fs = require('fs');
+const path = require('path');
 
 const isLogEnabled = process.env.NODE_ENV ? process.env.NODE_ENV !== 'production' : true;
 const compiler = webpack(devConfig);
@@ -23,6 +25,13 @@ compiler.plugin('done', (stats) => {
       });
       return;
     }
+    var distPath = path.join(process.cwd(), 'dist');
+    fs.readdir(distPath, (error, files) => {
+      if (files) {
+        console.log(chalk.red('The dist directory is not empty.\nWhat you are seeing is an old already built production build. Please delete the dist folder and restart'));
+      }
+
+    });
     console.log(chalk.green('Compiled!\n'));
     console.log(chalk.magenta('Please visit http://localhost:1234'));
   }

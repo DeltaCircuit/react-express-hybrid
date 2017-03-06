@@ -43,7 +43,7 @@ module.exports = {
         test: /\.svg$/,
         use: 'file-loader',
       },
-    ]
+    ],
   },
   plugins: [
     new ExtractTextPlugin(cssFilename),

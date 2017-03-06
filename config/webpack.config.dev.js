@@ -15,7 +15,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
 
       },
       {
@@ -44,7 +44,7 @@ module.exports = {
         test: /\.svg$/,
         loader: 'file-loader',
       },
-    ]
+    ],
   },
   devServer: {
     hot: true,

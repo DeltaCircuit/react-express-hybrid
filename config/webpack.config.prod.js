@@ -16,6 +16,20 @@ module.exports = {
   module: {
     loaders: [
       {
+        exclude: [
+          /\.html$/,
+          /\.(js|jsx)$/,
+          /\.css$/,
+          /\.json$/,
+          /\.svg$/
+        ],
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'static/media/[name].[hash:8].[ext]'
+        }
+      },
+      {
         test: /\.(js|jsx)$/,
         loaders: ['babel'],
         include: path.resolve(__dirname, '..', 'src', 'client'),

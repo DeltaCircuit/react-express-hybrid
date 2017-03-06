@@ -14,6 +14,20 @@ module.exports = {
   module: {
     loaders: [
       {
+        exclude: [
+          /\.html$/,
+          /\.(js|jsx)$/,
+          /\.css$/,
+          /\.json$/,
+          /\.svg$/
+        ],
+        loader: 'url',
+        query: {
+          limit: 10000,
+          name: 'static/media/[name].[hash:8].[ext]'
+        }
+      },
+      {
         test: /\.(js|jsx)$/,
         loaders: ['babel',
           'hot-module-accept',
@@ -28,7 +42,7 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'file',
-      },
+      }
     ],
   },
   devServer: {

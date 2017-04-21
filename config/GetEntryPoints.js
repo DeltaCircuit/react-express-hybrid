@@ -24,7 +24,7 @@ module.exports = function getEntryPoints(env) {
   // One or more sub modules present
   reactModules.forEach((module) => {
     let indexPath;
-    if (fs.existsSync(path.join(appSourceDir, module, 'index.js'))) {
+    if (fs.existsSync(path.join(appSourceDir, module, 'index.jsx'))) {
       indexPath = path.normalize(path.join(appSourceDir, module, 'index.jsx'));
     } else {
       indexPath = path.normalize(path.join(appSourceDir, module, 'src', 'index.jsx'));

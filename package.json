@@ -7,9 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "start": "cross-env NODE_ENV=development babel-node ./src/server/index.js",
-    "build": "webpack --config ./config/webpack.config.prod.js",
+    "build": "npm run ./config/build",
     "start:prod": "cross-env NODE_ENV=production node ./bin/www",
-    "compile": "babel ./src/server/ --out-dir ./bin/www/",
+    "compile:server": "babel ./src/server/ --out-dir ./bin/www/",
     "lint:fix": "eslint . --fix",
     "precommit": "npm run lint"
   },

@@ -38,5 +38,5 @@ This project has pre-built configuration settings that will allow you to create 
 * You can further modularize further by creating subfolders/files in this `src/server` directory.  
 
 ### Coding Guidelines
-* This project strictly follows Airbnb’s styling guide. Except _one rule_. The `react/jsx-filename-extension` rule. So, that you can add `JSX` codes to your `JS` files.
+* This project strictly follows Airbnb’s styling guide.
 * Babel is configured to this project with the `latest` preset. So, you can write your source JS in `ES6` or even in `ES7` (it's recommended)

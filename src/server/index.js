@@ -11,8 +11,10 @@ const env = app.get('env');
 if (env === 'production') {
   // eslint-disable-next-line no-console
   console.log(chalk.red('WARNING!!!: Running in Production mode.'));
+  app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
+} else {
+  app.use(express.static(path.resolve(__dirname, '..', '..', 'mem-dist')));
 }
-app.use(express.static(path.resolve(__dirname, '..', '..', 'dist')));
 
 // If no environment is specified, we'll assume its development env
 if (env !== 'production') {

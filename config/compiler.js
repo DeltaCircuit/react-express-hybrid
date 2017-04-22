@@ -26,11 +26,6 @@ compiler.plugin('done', (stats) => {
       return;
     }
     const distPath = path.join(process.cwd(), 'dist');
-    fs.readdir(distPath, (error, files) => {
-      if (files) {
-        console.log(chalk.red('The dist directory is not empty.\nWhat you are seeing is an old already built production build. Please delete the dist folder and restart'));
-      }
-    });
     console.log(chalk.green('Compiled!\n'));
     console.log(chalk.magenta('Please visit http://localhost:1234'));
   }

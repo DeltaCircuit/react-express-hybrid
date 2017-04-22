@@ -6,7 +6,7 @@ const getEntries = require('./GetEntryPoints');
 module.exports = {
   entry: getEntries('development'),
   output: {
-    path: path.resolve(__dirname, '..', 'dist'),
+    path: path.resolve(__dirname, '..', 'mem-dist'),
     filename: 'static/js/[name]/bundle.js',
     publicPath: 'http://localhost:1234/',
   },
